@@ -16,7 +16,7 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
     .factory('allCountriesRequest', function($http) {
        return {
          getData: function() {
-           return $http.get('http://api.geonames.org/countryInfoJSON?username=pixl_pshr').then(function(result) {
+           return $http.get('http://api.geonames.org/countryInfoJSON?username=pixl_pshr', { cache: true }).then(function(result) {
                return result.data;
            });
          }
@@ -30,14 +30,8 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
         $scope.countries = [];
 
        allCountriesRequest.getData().then(function(data) {
-           // $scope.countries = data;
            var parsedData = angular.fromJson(data);
            $scope.countries = parsedData.geonames;
-           console.log(parsedData);
-
-           // for (var i = 0; i < $scope.countries.length; i++) {
-           //  var 
-           // }
        });
 	}])
 	.controller('detailsCtrl', function($scope) {
