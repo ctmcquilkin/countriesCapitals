@@ -7,7 +7,7 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
         }).when('/countries', {
           templateUrl : 'countries.html',
           controller: 'listCtrl'
-        }).when('/countryDetails', {
+        }).when('/countries/:countryId', {
           templateUrl : 'countryDetails.html',
           controller: 'detailsCtrl'
         })
@@ -22,11 +22,21 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
          }
        }
     })
+    .factory('countryService', ['$resource', function($resource) {
+      return $resource('/api/food/:id', {id: '@id'}, {
+        markAsRemoved: {
+          url: '/api/food/:id/remove',
+          method: 'POST',
+          isArray: true
+        }
+      });
+    }])
 	.controller('indexCtrl', function($scope) {
 		// empty for now
 	})
-    .controller('listCtrl', ['$scope', 'allCountriesRequest', function ($scope, allCountriesRequest) {
+    .controller('listCtrl', ['$scope', 'allCountriesRequest', '$routeParams', function ($scope, allCountriesRequest, $routeParams) {
 
+        $scope.params = $routeParams;
         $scope.countries = [];
 
        allCountriesRequest.getData().then(function(data) {
@@ -34,6 +44,8 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
            $scope.countries = parsedData.geonames;
        });
 	}])
-	.controller('detailsCtrl', function($scope) {
-		// empty for now
-	});
+    .controller('detailsCtrl', ['$scope', '$routeParams', function ($scope, $routeParams) {
+
+        $scope.params = $routeParams;
+
+    }]);
