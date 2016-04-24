@@ -1,11 +1,20 @@
 <div class='container' ng-controller='listCtrl'>
-  <p>Countries</p>
-  <div ng-repeat="item in items">
-    <p>{{item.name}}</p>
-    <p>{{item.code}}</p>
-    <p>{{item.capital}}</p>
-    <p>{{item.area}}</p>
-    <p>{{item.population}}</p>
-    <p>{{item.continent}}</p>
-  </div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Country Code</th>
+            <th>Capital</th>
+            <th>Area in Square Km</th>
+            <th>Population</th>
+            <th>Continent</th>
+        </tr>
+        <tr ng-repeat="country in countries">
+            <td>{{country.countryName}}</td>
+            <td>{{country.countryCode}}</td>
+            <td>{{country.capital}}</td>
+            <td>{{country.areaInSqKm}}</td>
+            <td>{{country.population}}</td>
+            <td>{{country.continent}}</td>
+        </tr>
+    </table>
 </div>
