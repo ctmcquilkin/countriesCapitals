@@ -1,0 +1,26 @@
+{
+  "name": "countriesCapitals",
+  "version": "1.0.0",
+  "description": "Country information client for geonames.org",
+  "main": "gulp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctmcquilkin/countriesCapitals.git"
+  },
+  "author": "Chuck McQuilkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ctmcquilkin/countriesCapitals/issues"
+  },
+  "homepage": "https://github.com/ctmcquilkin/countriesCapitals",
+  "devDependencies": {
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.2"
+  }
+}
