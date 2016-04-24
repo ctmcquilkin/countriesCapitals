@@ -1,3 +1,11 @@
-<div class='container' ng-controller='detailsCtrl'>
-	<p>Detail Ctrl</p>
+<div class='container' ng-controller='listCtrl'>
+  <p>Countries</p>
+  <div ng-repeat="item in items">
+    <p>{{item.name}}</p>
+    <p>{{item.code}}</p>
+    <p>{{item.capital}}</p>
+    <p>{{item.area}}</p>
+    <p>{{item.population}}</p>
+    <p>{{item.continent}}</p>
+  </div>
 </div>
