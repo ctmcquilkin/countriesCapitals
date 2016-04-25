@@ -37,6 +37,12 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
         $scope.params = $routeParams;
         $scope.countries = [];
 
+        $scope.displayCountry = function() {
+            $scope.selectedCountry = this.country;
+            console.log($scope.selectedCountry);
+
+        };
+
        allCountriesRequest.getData().then(function(data) {
            var parsedData = angular.fromJson(data);
            $scope.countries = parsedData.geonames;
