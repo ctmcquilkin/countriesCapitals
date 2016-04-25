@@ -22,15 +22,13 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
          }
        }
     })
-    .factory('countryService', ['$resource', function($resource) {
-      return $resource('/api/food/:id', {id: '@id'}, {
-        markAsRemoved: {
-          url: '/api/food/:id/remove',
-          method: 'POST',
-          isArray: true
-        }
-      });
-    }])
+    .filter('capitalize', function() {
+      return function(input, scope) {
+        if (input!=null)
+        input = input.toLowerCase();
+        return input.substring(0,1).toUpperCase()+input.substring(1);
+      }
+    })
 	.controller('indexCtrl', function($scope) {
 		// empty for now
 	})
