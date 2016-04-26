@@ -31,15 +31,6 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
           },
           getData: function() {
             return countryData;
-          },
-          totalTip: function(tip) {
-            return totals.tipTotal += tip;
-          },
-          mealCount: function(mealCount){
-            return totals.mealCount += mealCount;
-          },
-          setTipAverage: function(tipAverage){
-            return totals.tipAverage += tipAverage;
           }
         };
     })
@@ -59,13 +50,8 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
         $scope.countries = [];
 
         $scope.displayCountry = function() {
-            var selectedCountry = this.country; // country object
+            var selectedCountry = this.country; // selected country object
             var selectedCountryName = '' + selectedCountry.countryName;
-
-            // for (var i = 0; i < selectedCountry.length; i++) {
-            //     var countryData = selectedCountry[i];
-            //     countryArray.push({ name: countryData.countryName, population: countryData.population, area: countryData.areaInSqKm, captial: countryData.captial });
-            // }
             
             countryService.saveData({ 'countryName' : selectedCountry.countryName, 'population' : selectedCountry.population, 'areaInSqKm' : selectedCountry.areaInSqKm, 'captial' : selectedCountry.captial });
 
