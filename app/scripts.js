@@ -32,22 +32,23 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
 	.controller('indexCtrl', function($scope) {
 		// empty for now
 	})
-    .controller('listCtrl', ['$scope', '$route', 'allCountriesRequest', '$routeParams', function ($scope, $route, allCountriesRequest, $routeParams) {
+    .controller('listCtrl', ['$scope', '$window', 'allCountriesRequest', '$routeParams', function ($scope, $window, allCountriesRequest, $routeParams) {
 
         $scope.params = $routeParams;
         $scope.countries = [];
 
         $scope.displayCountry = function() {
-            var selectedCountry = this.country;
-            $scope.countryData = [];
-            console.log(selectedCountry);
+            var selectedCountry = this.country; // country object
+            var selectedCountryName = '' + selectedCountry.countryName;
 
-            for (var i = 0; i < selectedCountry.length; i++) {
-                var countryData = selectedCountry[i];
-                $scope.countryData.push({ name: countryData.countryName, population: countryData.population, area: countryData.areaInSqKm, captial: countryData.captial });
-            }
+            // for (var i = 0; i < selectedCountry.length; i++) {
+            //     var countryData = selectedCountry[i];
+            //     countryArray.push({ name: countryData.countryName, population: countryData.population, area: countryData.areaInSqKm, captial: countryData.captial });
+            // }
 
-            $route.updateParams('#/' + selectedCountry.countryName);
+            console.log(selectedCountryName);
+
+            $window.location.assign('#/countries/' + selectedCountryName);
 
         };
 
