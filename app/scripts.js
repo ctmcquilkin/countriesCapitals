@@ -32,14 +32,22 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
 	.controller('indexCtrl', function($scope) {
 		// empty for now
 	})
-    .controller('listCtrl', ['$scope', 'allCountriesRequest', '$routeParams', function ($scope, allCountriesRequest, $routeParams) {
+    .controller('listCtrl', ['$scope', '$route', 'allCountriesRequest', '$routeParams', function ($scope, $route, allCountriesRequest, $routeParams) {
 
         $scope.params = $routeParams;
         $scope.countries = [];
 
         $scope.displayCountry = function() {
-            $scope.selectedCountry = this.country;
-            console.log($scope.selectedCountry);
+            var selectedCountry = this.country;
+            $scope.countryData = [];
+            console.log(selectedCountry);
+
+            for (var i = 0; i < selectedCountry.length; i++) {
+                var countryData = selectedCountry[i];
+                $scope.countryData.push({ name: countryData.countryName, population: countryData.population, area: countryData.areaInSqKm, captial: countryData.captial });
+            }
+
+            $route.updateParams('#/' + selectedCountry.countryName);
 
         };
 
