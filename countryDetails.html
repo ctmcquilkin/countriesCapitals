@@ -1,3 +1,10 @@
 <div class='container' ng-controller='detailsCtrl'>
 	<h1> {{params.countryId | capitalize }}</h1>
+	<table border="0" cellspacing="0">
+	  <tr ng-repeat="(key, value) in countryData">
+		<td ng-repeat="(key, value) in value">
+		  <span class="left">{{ key }}:</span> 
+		  <span class="right total">{{ value }}</span>
+		</td>
+	  </tr>
 </div>

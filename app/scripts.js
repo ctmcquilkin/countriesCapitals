@@ -22,6 +22,27 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
          }
        }
     })
+	.service('countryService', function() {
+        var countryData = [];
+        return {
+          saveData: function(data) {
+            countryData.push(data);
+            console.log('data: ' + countryData[0]);
+          },
+          getData: function() {
+            return countryData;
+          },
+          totalTip: function(tip) {
+            return totals.tipTotal += tip;
+          },
+          mealCount: function(mealCount){
+            return totals.mealCount += mealCount;
+          },
+          setTipAverage: function(tipAverage){
+            return totals.tipAverage += tipAverage;
+          }
+        };
+    })
     .filter('capitalize', function() {
       return function(input, scope) {
         if (input!=null)
@@ -32,7 +53,7 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
 	.controller('indexCtrl', function($scope) {
 		// empty for now
 	})
-    .controller('listCtrl', ['$scope', '$window', 'allCountriesRequest', '$routeParams', function ($scope, $window, allCountriesRequest, $routeParams) {
+    .controller('listCtrl', ['$scope', '$window', 'allCountriesRequest', '$routeParams', 'countryService', function ($scope, $window, allCountriesRequest, $routeParams, countryService) {
 
         $scope.params = $routeParams;
         $scope.countries = [];
@@ -45,6 +66,8 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
             //     var countryData = selectedCountry[i];
             //     countryArray.push({ name: countryData.countryName, population: countryData.population, area: countryData.areaInSqKm, captial: countryData.captial });
             // }
+            
+            countryService.saveData({ 'countryName' : selectedCountry.countryName, 'population' : selectedCountry.population, 'areaInSqKm' : selectedCountry.areaInSqKm, 'captial' : selectedCountry.captial });
 
             console.log(selectedCountryName);
 
@@ -57,8 +80,9 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
            $scope.countries = parsedData.geonames;
        });
 	}])
-    .controller('detailsCtrl', ['$scope', '$routeParams', function ($scope, $routeParams) {
+    .controller('detailsCtrl', ['$scope', '$routeParams', 'countryService', function ($scope, $routeParams, countryService) {
 
         $scope.params = $routeParams;
+        $scope.countryData = countryService.getData();
 
     }]);
