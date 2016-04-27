@@ -73,3 +73,14 @@ g:0}
   height: 100%;
   padding-top: 30px;
 }
+.countryDetails {
+  width: 400px;
+}
+table.countryDetails td:first-child {
+  width: 40%;
+  padding-right: 10px;
+  text-align: right;
+}
+table.countryDetails th, table.countryDetails td {
+  text-align: left;
+}

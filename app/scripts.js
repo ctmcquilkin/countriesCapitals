@@ -53,7 +53,7 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
             var selectedCountry = this.country; // selected country object
             var selectedCountryName = '' + selectedCountry.countryName;
             
-            countryService.saveData({ 'countryName' : selectedCountry.countryName, 'population' : selectedCountry.population, 'areaInSqKm' : selectedCountry.areaInSqKm, 'captial' : selectedCountry.captial });
+            countryService.saveData({ 'countryCode' : selectedCountry.countryCode, 'countryName' : selectedCountry.countryName, 'population' : selectedCountry.population, 'areaInSqKm' : selectedCountry.areaInSqKm, 'captial' : selectedCountry.capital });
 
             console.log(selectedCountryName);
 

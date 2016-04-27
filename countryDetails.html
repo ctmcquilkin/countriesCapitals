@@ -1,10 +1,23 @@
 <div class='container' ng-controller='detailsCtrl'>
 	<h1> {{params.countryId | capitalize }}</h1>
-	<table border="0" cellspacing="0">
-	  <tr ng-repeat="(key, value) in countryData">
-		<td ng-repeat="(key, value) in value">
-		  <span class="left">{{ key }}:</span> 
-		  <span class="right total">{{ value }}</span>
-		</td>
-	  </tr>
+
+  <table class="countryDetails">
+    <tr>
+      <td>Population of country</td>
+      <td>{{ countryData[0].population | number: fractionSize }}</td>
+    </tr>
+    <tr>
+      <td>Area</td>
+      <td>{{ countryData[0].areaInSqKm | number: fractionSize }}</td>
+    </tr>
+    <tr>
+      <td>Capital</td>
+      <td>{{ countryData[0].capital }}</td>
+    </tr>
+  </table>
+
+  <img ng-src="http://www.geonames.org/flags/x/{{countryData[0].countryCode|lowercase}}.gif"/>
+  <img ng-src="http://www.geonames.org/img/country/250/{{countryData[0].countryCode}}.png"/>
+
 </div>
+
