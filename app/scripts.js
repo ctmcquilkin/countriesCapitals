@@ -22,6 +22,24 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
          }
        }
     })
+    .factory('capitalRequest', function($http) {
+       return {
+         getData: function(capital) {
+           return $http.get('http://api.geonames.org/searchJSON?name_equals=' + capital + '&maxRows=10&username=pixl_pshr', { cache: true }).then(function(result) {
+               return result.data;
+           });
+         }
+       }
+    })
+    .factory('neighborRequest', function($http) {
+       return {
+         getData: function(countryCode) {
+           return $http.get('http://api.geonames.org/neighboursJSON?country=' + countryCode + '&username=pixl_pshr', { cache: true }).then(function(result) {
+               return result.data;
+           });
+         }
+       }
+    })
 	.service('countryService', function() {
         var countryData = [];
         return {
@@ -64,9 +82,20 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
            $scope.countries = parsedData.geonames;
        });
 	}])
-    .controller('detailsCtrl', ['$scope', '$routeParams', 'countryService', function ($scope, $routeParams, countryService) {
+    .controller('detailsCtrl', ['$scope', '$routeParams', 'countryService', 'capitalRequest', 'neighborRequest', function ($scope, $routeParams, countryService, capitalRequest, neighborRequest) {
 
         $scope.params = $routeParams;
         $scope.countryData = countryService.getData();
+
+       	capitalRequest.getData($routeParams).then(function(data) {
+           var parsedData = angular.fromJson(data);
+           $scope.capitalData = parsedData.geonames;
+           console.log($scope.capitalData);
+       	});
+       	
+       	neighborRequest.getData($routeParams).then(function(data) {
+           var parsedData = angular.fromJson(data);
+           $scope.neighborRequestData = parsedData.geonames;
+       	});
 
     }]);
