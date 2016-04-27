@@ -24,8 +24,8 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
     })
     .factory('capitalRequest', function($http) {
        return {
-         getData: function(capital) {
-           return $http.get('http://api.geonames.org/searchJSON?name_equals=' + capital + '&maxRows=10&username=pixl_pshr', { cache: true }).then(function(result) {
+         getData: function(countryName) {
+           return $http.get('http://api.geonames.org/searchJSON?name_equals=' + countryName + '&maxRows=10&username=pixl_pshr', { cache: true }).then(function(result) {
                return result.data;
            });
          }
@@ -34,7 +34,7 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
     .factory('neighborRequest', function($http) {
        return {
          getData: function(countryCode) {
-           return $http.get('http://api.geonames.org/neighboursJSON?country=' + countryCode + '&username=pixl_pshr', { cache: true }).then(function(result) {
+           return $http.get('http://api.geonames.org/neighboursJSON?country=' + countryCode + '&maxRows=10&username=pixl_pshr', { cache: true }).then(function(result) {
                return result.data;
            });
          }
@@ -45,7 +45,6 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
         return {
           saveData: function(data) {
             countryData.push(data);
-            console.log('data: ' + countryData[0]);
           },
           getData: function() {
             return countryData;
@@ -86,16 +85,24 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
 
         $scope.params = $routeParams;
         $scope.countryData = countryService.getData();
-
-       	capitalRequest.getData($routeParams).then(function(data) {
-           var parsedData = angular.fromJson(data);
-           $scope.capitalData = parsedData.geonames;
-           console.log($scope.capitalData);
-       	});
+        $scope.capitalData = [];
+        $scope.neighborRequestData = [];
+        var countryName = $scope.countryData.countryId; // how can I get the selected country Id?
+        var countryCode = $scope.countryData.countryCode; // how can I get the selected country code?
+        
+        var log = [];
+		angular.forEach($scope.counryData, function(value, key) {
+			this.push(key + ': ' + value);
+		}, log);
+		console.log(log);
+//        	capitalRequest.getData(countryName).then(function(data) {
+//            var parsedData = angular.fromJson(data);
+//            $scope.capitalData = parsedData.geonames;
+//        	});
        	
-       	neighborRequest.getData($routeParams).then(function(data) {
-           var parsedData = angular.fromJson(data);
-           $scope.neighborRequestData = parsedData.geonames;
-       	});
+//        	neighborRequest.getData($routeParams).then(function(data) {
+//            var parsedData = angular.fromJson(data);
+//            $scope.neighborRequestData = parsedData.geonames;
+//        	});
 
     }]);
