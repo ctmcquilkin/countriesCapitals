@@ -1,6 +1,9 @@
 <div class='container' ng-controller='detailsCtrl'>
 	<h1>{{params.countryId | capitalize }}</h1>
 
+		<h2>{{name}}</h2>
+		<input ng-model="someThing.x"/>  
+
   <table class="countryDetails">
     <tr>
       <td>Population of country</td>
@@ -17,7 +20,14 @@
   </table>
   
   <table>
-  	<tr ng-repeat="item in countryRequestData"></tr>
+  	<tr>Capital Data Blob: {{capitalData | json}}</tr>
+  </table>
+  <br>
+  <table>
+  	<tr>
+  		<td>Neighbors:</td> <!--  ng-repeat="(key, value) in NeighbourData track by $index | json" }} -->
+  		<td>{{NeighbourData | json}}</td>
+  	</tr>
   </table>
 
   <img ng-src="http://www.geonames.org/flags/x/{{countryData[0].countryCode|lowercase}}.gif"/>
