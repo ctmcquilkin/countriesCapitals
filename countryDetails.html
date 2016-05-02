@@ -1,9 +1,6 @@
 <div class='container' ng-controller='detailsCtrl'>
 	<h1>{{params.countryId | capitalize }}</h1>
 
-		<h2>{{name}}</h2>
-		<input ng-model="someThing.x"/>  
-
   <table class="countryDetails">
     <tr>
       <td>Population of country</td>
@@ -17,21 +14,26 @@
       <td>Capital</td>
       <td>{{ countryData[0].capital }}</td>
     </tr>
+    <tr>
+      <td>Capital Population:</td>
+      <td ng-repeat="capital in capitalData | filter: capitalFilter">
+        {{ capital.population }}
+      </td>
+    </tr>
   </table>
-  
-  <table>
-  	<tr>Capital Data Blob: {{capitalData | json}}</tr>
-  </table>
+
   <br>
   <table>
   	<tr>
   		<td>Neighbors:</td> <!--  ng-repeat="(key, value) in NeighbourData track by $index | json" }} -->
-  		<td>{{NeighbourData | json}}</td>
+      <td class="list-comma" ng-repeat="neighbor in NeighbourData">
+        {{ neighbor.countryName }},
+      </td>
   	</tr>
   </table>
 
-  <img ng-src="http://www.geonames.org/flags/x/{{countryData[0].countryCode|lowercase}}.gif"/>
-  <img ng-src="http://www.geonames.org/img/country/250/{{countryData[0].countryCode}}.png"/>
+  <img ng-src="http://www.geonames.org/flags/x/{{currentSelectedCountry.countryCode|lowercase}}.gif"/>
+  <img ng-src="http://www.geonames.org/img/country/250/{{currentSelectedCountry.countryCode}}.png"/>
 
 </div>
 

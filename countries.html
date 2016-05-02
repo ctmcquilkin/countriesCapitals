@@ -1,6 +1,6 @@
 <div class='container' ng-controller='listCtrl'>
 		<h2>{{name}}</h2>
-		<input ng-model="thing.x"/>   
+
     <table>
         <tr>
             <th>Name</th>
@@ -10,7 +10,7 @@
             <th>Population</th>
             <th>Continent</th>
         </tr>
-        <tr ng-repeat="country in countries" ng-click="displayCountry();">
+        <tr ng-repeat="country in countries" ng-model="selected.countryCode" ng-click="displayCountry();">
             <td>{{ country.countryName }}</td>
             <td>{{ country.countryCode }}</td>
             <td>{{ country.capital }}</td>
