@@ -18,3 +18,4 @@ gulp.task('usemin', function() {
 });
 
 gulp.task('build', ['copy-html-files', 'usemin']);
+gulp.task('default', ['copy-html-files', 'usemin']);

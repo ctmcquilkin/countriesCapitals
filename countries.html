@@ -1,22 +1,25 @@
 <div class='container' ng-controller='listCtrl'>
 		<h2>{{name}}</h2>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Country Code</th>
-            <th>Capital</th>
-            <th>Area in Square Km</th>
-            <th>Population</th>
-            <th>Continent</th>
-        </tr>
-        <tr ng-repeat="country in countries" ng-model="selected.countryCode" ng-click="displayCountry();">
-            <td>{{ country.countryName }}</td>
-            <td>{{ country.countryCode }}</td>
-            <td>{{ country.capital }}</td>
-            <td>{{ country.areaInSqKm | number: fractionSize }}</td>
-            <td>{{ country.population | number: fractionSize }}</td>
-            <td>{{ country.continent }}</td>
-        </tr>
-    </table>
+	<div class="table-responsive-vertical shadow-z-1">
+		<table id="table" class="table table-hover table-mc-light-blue">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Country Code</th>
+					<th>Capital</th>
+					<th>Area in Square Km</th>
+					<th>Population</th>
+					<th>Continent</th>
+				</tr>
+			</thead>
+			<tr ng-repeat="country in countries" ng-model="selected.countryCode" ng-click="displayCountry();">
+				<td>{{ country.countryName }}</td>
+				<td>{{ country.countryCode }}</td>
+				<td>{{ country.capital }}</td>
+				<td>{{ country.areaInSqKm | number: fractionSize }}</td>
+				<td>{{ country.population | number: fractionSize }}</td>
+				<td>{{ country.continent }}</td>
+			</tr>
+		</table>
+	</div>
 </div>
