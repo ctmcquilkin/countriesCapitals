@@ -81,12 +81,17 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
     return function(input, scope) {
       if (input!=null)
       input = input.toLowerCase();
-      return input.substring(0,1).toUpperCase()+input.substring(1);
+      return input.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase() });
     }
   })
   .filter('joinBy', function () {
         return function (input,delimiter) {
             return (input || []).join(delimiter || ',');
+        };
+  })
+  .filter('removeUnderscore', function () {
+        return function (input,delimiter) {
+            return (input || []).replace(/_/g, ' ');
         };
   })
 	.controller('indexCtrl', function($scope) {
@@ -104,11 +109,12 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
 
       $scope.displayCountry = function() {
           var selectedCountry = this.country; // selected country object
+          var countryNameStr = selectedCountry.countryName.replace(/\s+/g, '_')
 
           countryService.selected.countryCode = selectedCountry.countryCode;
           countryService.saveData({ 'countryCode' : selectedCountry.countryCode, 'countryName' : selectedCountry.countryName, 'population' : selectedCountry.population, 'areaInSqKm' : selectedCountry.areaInSqKm, 'capital' : selectedCountry.capital });
 
-          $window.location.assign('#/countries/' + selectedCountry.countryName);
+          $window.location.assign('#/countries/' + countryNameStr);
       };
 	}])
     .controller('detailsCtrl', ['$scope', '$routeParams', 'countryService', 'countryRequest', function ($scope, $routeParams, countryService, countryRequest) {

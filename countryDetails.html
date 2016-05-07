@@ -1,5 +1,5 @@
 <div class='container' ng-controller='detailsCtrl'>
-	<h1>{{params.countryId | capitalize }}</h1>
+	<h1>{{params.countryId | removeUnderscore | capitalize }}</h1>
   <br>
   <table id="table" class="countryDetails table table-mc-light-blue">
     <tr>
