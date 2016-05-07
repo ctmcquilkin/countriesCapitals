@@ -1,17 +1,17 @@
 <div class='container' ng-controller='detailsCtrl'>
 	<h1>{{params.countryId | capitalize }}</h1>
-
-  <table class="countryDetails">
+  <br>
+  <table id="table" class="countryDetails table table-mc-light-blue">
     <tr>
-      <td>Population of country</td>
+      <td>Population of country:</td>
       <td>{{ countryData[0].population | number: fractionSize }}</td>
     </tr>
     <tr>
-      <td>Area</td>
+      <td>Area:</td>
       <td>{{ countryData[0].areaInSqKm | number: fractionSize }}</td>
     </tr>
     <tr>
-      <td>Capital</td>
+      <td>Capital:</td>
       <td>{{ countryData[0].capital }}</td>
     </tr>
     <tr>
@@ -20,20 +20,17 @@
         {{ capital.population }}
       </td>
     </tr>
-  </table>
-
-  <br>
-  <table>
-  	<tr>
-  		<td>Neighbors:</td> <!--  ng-repeat="(key, value) in NeighbourData track by $index | json" }} -->
+    <tr>
+      <td ng-if="neighbor.countryName">Neighbors:</td> <!--  ng-repeat="(key, value) in NeighbourData track by $index | json" }} -->
       <td class="list-comma" ng-repeat="neighbor in NeighbourData">
         {{ neighbor.countryName }},
       </td>
-  	</tr>
+    </tr>
+    <tr>
+      <td><img class="flag" width="250" ng-src="http://www.geonames.org/flags/x/{{currentSelectedCountry.countryCode|lowercase}}.gif"/></td>
+      <td><img class="map" width="250" ng-src="http://www.geonames.org/img/country/250/{{currentSelectedCountry.countryCode}}.png"/></td>
+    </tr>
   </table>
-
-  <img ng-src="http://www.geonames.org/flags/x/{{currentSelectedCountry.countryCode|lowercase}}.gif"/>
-  <img ng-src="http://www.geonames.org/img/country/250/{{currentSelectedCountry.countryCode}}.png"/>
 
 </div>
 

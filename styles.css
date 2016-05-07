@@ -77,7 +77,7 @@ g:0}
   width: 400px;
 }
 table.countryDetails td:first-child {
-  width: 40%;
+  width: 30%;
   padding-right: 10px;
   text-align: right;
 }
@@ -684,4 +684,13 @@ body {
   .table-responsive-vertical .table-hover.table-mc-deep-orange > tbody > tr > td:hover {
     background-color: #ffccbc;
   }
+}
+.flag {
+  overflow: hidden;
+/*  position: absolute;
+  clip: rect(0px, 250px, 140px, 0px);*/
+}
+.map {
+  position: absolute;
+  clip: rect(0px, 250px, 140px, 0px);
 }

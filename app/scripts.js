@@ -13,6 +13,19 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
         })
         .otherwise('/indexCtrl');
     }])
+    .run(function($rootScope, $location, $timeout) {
+        $rootScope.$on('$routeChangeError', function() {
+            $location.path("/error");
+        });
+        $rootScope.$on('$routeChangeStart', function() {
+            $rootScope.isLoading = true;
+        });
+        $rootScope.$on('$routeChangeSuccess', function() {
+          $timeout(function() {
+            $rootScope.isLoading = false;
+          }, 1000);
+        });
+    })
     .factory('allCountriesRequest', function($http) {
        return {
          getData: function() {
@@ -75,7 +88,7 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
         return function (input,delimiter) {
             return (input || []).join(delimiter || ',');
         };
-    })
+  })
 	.controller('indexCtrl', function($scope) {
 		// empty for now
 	})
@@ -96,7 +109,6 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
           countryService.saveData({ 'countryCode' : selectedCountry.countryCode, 'countryName' : selectedCountry.countryName, 'population' : selectedCountry.population, 'areaInSqKm' : selectedCountry.areaInSqKm, 'capital' : selectedCountry.capital });
 
           $window.location.assign('#/countries/' + selectedCountry.countryName);
-
       };
 	}])
     .controller('detailsCtrl', ['$scope', '$routeParams', 'countryService', 'countryRequest', function ($scope, $routeParams, countryService, countryRequest) {
@@ -114,5 +126,4 @@ var CountriesCapitals = angular.module("root", ['ngAnimate', 'ngRoute'])
             $scope.capitalData = datas[0].geonames;
 			      $scope.NeighbourData = datas[1].geonames;
           })
-
     }]);
