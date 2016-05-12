@@ -12,8 +12,9 @@ html, body {
 *, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}
 header{background:#bdc3c7;line-height:0.5;font-family:sans-serif;text-transform:uppe
 rcase;font-size:16px;color:#fff; z-index:1}
-a{text-decoration:none;color:#fff}
+/* a{text-decoration:none;color:#fff} */
 header{background:#1E262D;width:100%;position:relative}
+header a { text-decoration:none;color:#fff }
 header:after{content:"";clear:both;display:block}
 .logo{float:left;padding:34px 0 26px}
 .logo a{font-size:18px;display:block;padding:0 0 0 20px}
