@@ -27,8 +27,8 @@
         <li class="grid-body animate-repeat" ng-repeat="country in pagedItems[currentPage - 1] | orderBy: 'name' | filter:query" ng-class="{'last':$last}">          
           <ul>
             <li>
-<!--               <span class="label label-default"><span ng-class="flag-icon flag-icon-gb"></span></span> -->
-			  <span class="grid-usericon" ng-style="{ 'background' :'#456183' }">{{ country.countryCode }}</span>
+              <span class="flag-icon flag-icon-{{country.countryCode|lowercase}}"></span>
+<!-- 			  <span class="grid-usericon" ng-style="{ 'background' :'#456183' }">{{ country.countryCode }}</span> -->
               <span class="grid-title"><a ng-click="displayCountry();">{{ country.countryName }}</a></span>
             </li>
             

@@ -1,4 +1,4 @@
-var CountriesCapitals = angular.module("root", ['ui.bootstrap', 'ngAnimate', 'ngRoute'])
+var CountriesCapitals = angular.module("root", ['ui.bootstrap', 'ngTouch', 'ngAnimate', 'ngRoute'])
 	.constant('GEO_NAMES_USER_NAME', 'pixl_pshr')
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/', {
@@ -96,7 +96,7 @@ var CountriesCapitals = angular.module("root", ['ui.bootstrap', 'ngAnimate', 'ng
 		  scope.search = function () {
 
 			scope.filteredItems = $filter('filter')(scope.items, $rootScope.query);
-			console.log(scope.filteredItems);
+// 			console.log(scope.filteredItems);
 
 			  // take care of the sorting order
 			if (scope.sortingOrder !== '') {
@@ -200,16 +200,16 @@ var CountriesCapitals = angular.module("root", ['ui.bootstrap', 'ngAnimate', 'ng
 	
 		$scope.gridToggleList = true;
 		
-		console.log($scope.gridToggleList);
+// 		console.log($scope.gridToggleList);
 		$scope.action = function(){
 			if ($scope.gridToggleList) {
 				$scope.gridToggleThumb = true;
 				$scope.gridToggleList = false;
-				console.log($scope.gridToggleList);
+// 				console.log($scope.gridToggleList);
 			} else {
 				$scope.gridToggleThumb = false;
 				$scope.gridToggleList = true;
-				console.log($scope.gridToggleList);
+// 				console.log($scope.gridToggleList);
 			}
 
 		};	
@@ -242,6 +242,7 @@ var CountriesCapitals = angular.module("root", ['ui.bootstrap', 'ngAnimate', 'ng
         $scope.params = $routeParams;
         $scope.countryData = countryService.getData();
         $scope.currentSelectedCountry = countryService.selected; 
+        $scope.currentSelectedCountryCapital = countryService.selected.capital;
         var countryCode = countryService.selected.countryCode;
         $scope.mapBg = 'http://www.geonames.org/flags/x/' + countryCode + '.png) center center no-repeat';
 
