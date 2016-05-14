@@ -1,8 +1,3 @@
-/*@import url("http://fonts.googleapis.com/css?family=Lato:300,400,700");
-*, *:before, *:after {
-  box-sizing: border-box;
-}*/
-
 html, body {
   background: #F5F5F5;
   font-family: 'Lato', sans-serif;
@@ -36,25 +31,6 @@ nav li li a:hover{background:#bdc3c7;background:#FAFBFB}
 }
 @media only screen and (max-width: 600px) {
   .logo {display: none;}
-/*  nav{display:none;width:100%;clear:both;float:none;max-height:400px;overflow-y:sc
-roll}
-  #menu-icon{
-    width: 44px;
-    height: 100%;
-    background: url("cd-icon-menu.svg") no-repeat center center;
-    background-size: 44px 44px;
-    cursor: pointer;
-  }
-  nav{padding:10px}
-  nav ul{float:none}
-  nav li{float:none}
-  nav ul li a{float:none;padding:8px;display:block}
-  #header nav ul ul{display:block;position:static;background:none;border:none;paddin
-g:0}
-  #header nav a{color:#fff;padding:8px}
-  #header nav a:hover{background:#fff;color:#333;border-radius:3px}
-  #header nav ul li li a:before{content:"- "}*/
-}
 
 .left {
   text-align: left !important;

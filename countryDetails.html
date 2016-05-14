@@ -2,14 +2,12 @@
 
 	<div class="group">
 		<div class="left">
-	<!--         <img class="map" alt="map" width="250" ng-src="http://www.geonames.org/img/country/250/{{currentSelectedCountry.countryCode}}.png"/> -->
-<!-- 	        <img src="img/img-1.jpg" alt="Placeholder"> -->
 			<img class="flag" alt="flag" width="250" ng-src="http://www.geonames.org/flags/x/{{currentSelectedCountry.countryCode|lowercase}}.gif"/>
 			<h1>{{params.countryId | removeUnderscore | capitalize }}</h1>
 		
 			<p>Population of country: {{ countryData[0].population | number: fractionSize }}</p>
 			<p>Area: {{ countryData[0].areaInSqKm | number: fractionSize }}</p>
-			<p>Capital: {{ currentSelectedCountryCapital }}</p>
+			<p>Capital: {{ countryData[0].capital }}</p>
 			<p>Capital Population:
 				<span ng-repeat="capital in capitalData | filter: capitalFilter">
 					{{ capital.population | number: fractionSize }}
@@ -22,9 +20,6 @@
 			</p>
 			<a class="cc-btn back-btn" href="#/countries">← Go back</a>	
 		</div>
-<!-- 		<div class="right" ng-class="{background:url(../img/img-1.jpg) center center no-repeat;}"> -->
-<!-- 		<div class="right" ng-style="{ 'background-image': 'url(http://www.geonames.org/flags/x/' + currentSelectedCountry.countryCode + '.png) center center no-repeat' }"> -->
-<!-- 		<div class="right" ng-style="{ 'background-image': 'url(' + mapBg + ')' }"> -->
 		<div class="right">
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
@@ -43,46 +38,3 @@
   <footer class="detail-footer">
     <p>Data provided by <a href="http://geonames.org/">Geonames</a>.</p>
   </footer>
-<!-- 
-	<section class="cd-single-item" ng-controller='detailsCtrl'>
-		<div class="cd-slider-wrapper">
-			<ul class="cd-slider">
-				<li>
-					<img src="img/img-1.jpg" alt="Placeholder">
-<!~~ 					<img class="map" alt="map" width="250" ng-src="http://www.geonames.org/img/country/250/{{currentSelectedCountry.countryCode}}.png"/> ~~>
-				</li>
-			</ul> <!~~ cd-slider ~~>
-
-			<a href="#0" class="cd-close">Close</a>
-		</div> <!~~ cd-slider-wrapper ~~>
-
-		<div class="cd-item-info">
-			<h1>{{params.countryId | removeUnderscore | capitalize }}</h1>
-			
-			<img class="flag" alt="flag" width="250" ng-src="http://www.geonames.org/flags/x/{{currentSelectedCountry.countryCode|lowercase}}.gif"/>
-			<p>Population of country: {{ countryData[0].population | number: fractionSize }}</p>
-			<p>Area: {{ countryData[0].areaInSqKm | number: fractionSize }}</p>
-			<p>Capital: {{ countryData[0].capital }}</p>
-			<p>Capital Population:
-				<span ng-repeat="capital in capitalData | filter: capitalFilter">
-					{{ capital.population }}
-				</span>
-			</p>
-			<p ng-if="neighbor.countryName">Neighbors: 
-				<span class="list-comma" ng-repeat="neighbor in NeighbourData">
-					{{ neighbor.countryName }},
-				</span>
-			</p>
-
-			<a class="cc-btn" href="#/countries">← Go back</a>						
-		</div> <!~~ cd-item-info ~~>
-	</section> <!~~ cd-single-item ~~>
-
-<!~~ 
-	<section class="cd-content">
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptatem, quisquam veniam sequi in quasi excepturi laudantium fugit nihil odio minima quae consequuntur dolorum pariatur obcaecati, adipisci dignissimos officia saepe itaque deleniti porro odit vitae voluptate. Blanditiis sunt obcaecati corporis, alias adipisci. Eum illum voluptatibus expedita nulla eius provident pariatur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptatem, quisquam veniam sequi in quasi excepturi laudantium fugit nihil odio minima quae consequuntur dolorum pariatur obcaecati, adipisci dignissimos officia saepe itaque deleniti porro odit vitae voluptate.
-		</p>
-	</section>
- ~~>
- -->

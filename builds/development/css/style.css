@@ -425,26 +425,11 @@ Patterns - reusable parts of our design
 .cc-btn:hover {
   background-color: rgb(9, 171, 197);
 }
-/* 
-.cc-btn {
-  display: inline-block;
-  text-decoration: none;
-  padding: .6em 2.2em;
-  font-weight: 700;
-  color: #1bbbef;
-  border: 1px solid #1bbbef;
-  -moz-border-radius: 100px;
-  -webkit-border-radius: 100px;
-  border-radius: 100px;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.back-btn {
+  margin-left: 3em;
+  margin-bottom: 2.7em;
+  margin-top: 1em;
 }
-.cc-btn:hover {
-  background-color: rgb(27, 187, 239);
-  color: #f2f2f2;
-}
- */
  
 h1 {
   color: #38405e;
@@ -557,22 +542,10 @@ p a {
 		margin: 1em 0;
 		color: #666666;
     }
-	.back-btn {
-	  margin-left: 3em;
-	  margin-bottom: 2.7em;
-	  margin-top: 1em;
-	}
     img {
         max-width: 100%;
         height: auto;
     }
-/* 
-    .map {
-	   width:100%; 
-	   height:100%; 
-	   background:url(../img/img-1.jpg) center center no-repeat;
-    }
- */
     .group:after {
         content:"";
         display: table;
