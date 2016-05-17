@@ -6,7 +6,7 @@
   </div>
 
       <div class="grid-toggle">
-        <a ng-click="action()" ng-class="{ 'active' : gridToggleList }">
+        <a ng-click="gridToggle = !gridToggle" ng-class="{ 'active' : gridToggle }">
           <span class="m m-squares"></span>
           <span class="m m-form"></span>
         </a>
@@ -15,7 +15,7 @@
 </div>
 <div class='container' ng-controller='listCtrl'>
 
-      <ul class="grid" ng-class="{ 'grid-list' : gridToggleList, 'grid-thumb' : gridToggleThumb }">
+    <ul class="grid" ng-class="{ 'grid-list' : gridToggle, 'grid-thumb' : !gridToggle }">
         <li class="grid-head">
           <ul>
             <li style="width:40%"><a ng-click="sort_by('countryName')">Name</a></li>
